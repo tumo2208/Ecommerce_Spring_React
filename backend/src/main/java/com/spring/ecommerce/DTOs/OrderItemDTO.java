@@ -9,6 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -24,7 +25,8 @@ public class OrderItemDTO {
 
     private UserDTO user;
 
-    private Order order;
+    private OrderDTO order;
 
     private ProductDTO product;
+    private LocalDate createdAt;
 }

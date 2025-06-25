@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Data
@@ -25,4 +26,6 @@ public class UserDTO {
     private UserRole role;
     private List<OrderItemDTO> orderItemList;
     private AddressDTO address;
+
+    private LocalDate createdAt;
 }

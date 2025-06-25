@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.List;
 
 @Data
@@ -20,4 +21,5 @@ public class OrderDTO {
     private BigDecimal totalPrice;
 
     private List<OrderItemDTO> orderItemList;
+    private LocalDate createdAt;
 }
