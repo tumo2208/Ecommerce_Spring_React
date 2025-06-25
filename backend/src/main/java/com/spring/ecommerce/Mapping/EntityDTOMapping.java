@@ -6,6 +6,7 @@ import com.spring.ecommerce.DTOs.OrderDTO;
 import com.spring.ecommerce.DTOs.OrderItemDTO;
 import com.spring.ecommerce.DTOs.ProductDTO;
 import com.spring.ecommerce.DTOs.UserDTO;
+import com.spring.ecommerce.Enums.UserRole;
 import com.spring.ecommerce.Models.Address;
 import com.spring.ecommerce.Models.Category;
 import com.spring.ecommerce.Models.Order;
@@ -24,9 +25,9 @@ public class EntityDTOMapping {
 
         AddressDTO addressDTO = new AddressDTO();
         addressDTO.setId(address.getId());
-        addressDTO.setStreet(address.getStreet());
+        addressDTO.setNumber(address.getNumber());
         addressDTO.setCity(address.getCity());
-        addressDTO.setState(address.getState());
+        addressDTO.setDistrict(address.getDistrict());
         addressDTO.setZipCode(address.getZipCode());
         addressDTO.setCountry(address.getCountry());
         addressDTO.setUser(userDtoFromUser(address.getUser()));
@@ -105,7 +106,7 @@ public class EntityDTOMapping {
         userDTO.setEmail(user.getEmail());
         userDTO.setPassword(user.getPassword());
         userDTO.setPhoneNumber(user.getPhoneNumber());
-        userDTO.setRole(user.getRole());
+        userDTO.setRole(user.getRole().name());
         userDTO.setOrderItemList(user.getOrderItemList().stream().map(this::orderItemDtoFromOrderItem).toList());
         userDTO.setAddress(addressDtoFromAddress(user.getAddress()));
         userDTO.setCreatedAt(user.getCreatedAt());

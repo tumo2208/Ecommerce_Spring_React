@@ -23,7 +23,7 @@ public class UserDTO {
     private String email;
     private String password;
     private String phoneNumber;
-    private UserRole role;
+    private String role;
     private List<OrderItemDTO> orderItemList;
     private AddressDTO address;
 
