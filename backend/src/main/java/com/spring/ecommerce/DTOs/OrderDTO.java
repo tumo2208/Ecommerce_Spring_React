@@ -20,6 +20,6 @@ public class OrderDTO {
 
     private BigDecimal totalPrice;
 
-    private List<OrderItemDTO> orderItemList;
+    private List<Long> orderItemIdList;
     private LocalDate createdAt;
 }

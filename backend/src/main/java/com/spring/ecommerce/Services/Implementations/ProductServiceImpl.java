@@ -57,20 +57,21 @@ public class ProductServiceImpl implements ProductService {
                 .orElseThrow(() -> new ResourceNotFoundException("Product not found with id: " + productId));
         Category category = null;
         String imageUrl = null;
-
-        if (name != null) product.setName(name);
-        if (description != null) product.setDescription(description);
-        if (price != null) product.setPrice(price);
         if (image != null && !image.isEmpty()) {
             String imageId = UUID.randomUUID().toString();
             imageUrl = cloudinaryService.uploadImage(image, imageId);
-            product.setImageUrl(imageUrl);
         }
         if (categoryId != null) {
             category = categoryRepository.findById(categoryId)
                     .orElseThrow(() -> new ResourceNotFoundException("Category not found with id: " + categoryId));
-            product.setCategory(category);
         }
+
+        if (name != null) product.setName(name);
+        if (description != null) product.setDescription(description);
+        if (price != null) product.setPrice(price);
+        product.setImageUrl(imageUrl);
+        product.setCategory(category);
+
         productRepository.save(product);
         Response response = new Response<>();
         response.setStatus(200);

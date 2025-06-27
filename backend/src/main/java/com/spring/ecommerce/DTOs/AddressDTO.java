@@ -20,5 +20,5 @@ public class AddressDTO {
     private String zipCode;
     private String country;
 
-    private UserDTO user;
+    private Long userId;
 }

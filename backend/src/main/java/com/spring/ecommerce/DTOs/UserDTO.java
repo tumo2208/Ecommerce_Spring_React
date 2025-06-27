@@ -24,8 +24,8 @@ public class UserDTO {
     private String password;
     private String phoneNumber;
     private String role;
-    private List<OrderItemDTO> orderItemList;
-    private AddressDTO address;
+    private List<Long> orderItemIdList;
+    private Long addressId;
 
     private LocalDate createdAt;
 }

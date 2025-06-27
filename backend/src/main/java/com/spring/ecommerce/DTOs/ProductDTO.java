@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.math.BigDecimal;
 
@@ -19,7 +20,7 @@ public class ProductDTO {
     private String name;
     private String description;
     private BigDecimal price;
-    private String imageUrl;
+    private MultipartFile image;
 
-    private CategoryDTO category;
+    private Long categoryId;
 }

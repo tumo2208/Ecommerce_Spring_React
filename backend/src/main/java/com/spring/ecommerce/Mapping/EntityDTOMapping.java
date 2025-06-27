@@ -30,7 +30,7 @@ public class EntityDTOMapping {
         addressDTO.setDistrict(address.getDistrict());
         addressDTO.setZipCode(address.getZipCode());
         addressDTO.setCountry(address.getCountry());
-        addressDTO.setUser(userDtoFromUser(address.getUser()));
+        addressDTO.setUserId(address.getUser() != null ? address.getUser().getId() : null);
 
         return addressDTO;
     }
@@ -56,7 +56,8 @@ public class EntityDTOMapping {
         orderDTO.setId(order.getId());
         orderDTO.setCreatedAt(order.getCreatedAt());
         orderDTO.setTotalPrice(order.getTotalPrice());
-        orderDTO.setOrderItemList(order.getOrderItemList().stream().map(this::orderItemDtoFromOrderItem).toList());
+        orderDTO.setOrderItemIdList(order.getOrderItemList() != null ?
+            order.getOrderItemList().stream().map(OrderItem::getId).toList() : null);
 
         return orderDTO;
     }
@@ -72,9 +73,9 @@ public class EntityDTOMapping {
         orderItemDTO.setPrice(orderItem.getPrice());
         orderItemDTO.setStatus(orderItem.getStatus());
         orderItemDTO.setCreatedAt(orderItem.getCreatedAt());
-        orderItemDTO.setUser(userDtoFromUser(orderItem.getUser()));
-        orderItemDTO.setOrder(orderDtoFromOrder(orderItem.getOrder()));
-        orderItemDTO.setProduct(productDtoFromProduct(orderItem.getProduct()));
+        orderItemDTO.setProductId(orderItem.getProduct() != null ? orderItem.getProduct().getId() : null);
+        orderItemDTO.setUserId(orderItem.getUser() != null ? orderItem.getUser().getId() : null);
+        orderItemDTO.setOrderId(orderItem.getOrder() != null ? orderItem.getOrder().getId() : null);
 
         return orderItemDTO;
     }
@@ -89,8 +90,7 @@ public class EntityDTOMapping {
         productDTO.setName(product.getName());
         productDTO.setDescription(product.getDescription());
         productDTO.setPrice(product.getPrice());
-        productDTO.setImageUrl(product.getImageUrl());
-        productDTO.setCategory(categoryDtoFromCategory(product.getCategory()));
+        productDTO.setCategoryId(product.getCategory() != null ? product.getCategory().getId() : null);
 
         return productDTO;
     }
@@ -107,8 +107,9 @@ public class EntityDTOMapping {
         userDTO.setPassword(user.getPassword());
         userDTO.setPhoneNumber(user.getPhoneNumber());
         userDTO.setRole(user.getRole().name());
-        userDTO.setOrderItemList(user.getOrderItemList().stream().map(this::orderItemDtoFromOrderItem).toList());
-        userDTO.setAddress(addressDtoFromAddress(user.getAddress()));
+        userDTO.setOrderItemIdList(user.getOrderItemList() != null ?
+            user.getOrderItemList().stream().map(OrderItem::getId).toList() : null);
+        userDTO.setAddressId(user.getAddress() != null ? user.getAddress().getId() : null);
         userDTO.setCreatedAt(user.getCreatedAt());
 
         return userDTO;

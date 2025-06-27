@@ -23,10 +23,10 @@ public class OrderItemDTO {
     private BigDecimal price;
     private OrderStatus status;
 
-    private UserDTO user;
+    private Long userId;
 
-    private OrderDTO order;
+    private Long orderId;
 
-    private ProductDTO product;
+    private Long productId;
     private LocalDate createdAt;
 }
