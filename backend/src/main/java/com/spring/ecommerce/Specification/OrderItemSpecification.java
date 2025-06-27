@@ -1,5 +1,6 @@
 package com.spring.ecommerce.Specification;
 
+import com.spring.ecommerce.Enums.OrderStatus;
 import com.spring.ecommerce.Models.OrderItem;
 import org.springframework.data.jpa.domain.Specification;
 
@@ -8,13 +9,9 @@ import java.time.LocalDate;
 
 public class OrderItemSpecification {
 
-    public static Specification<OrderItem> hasStatus(String status) {
-        return (root, query, criteriaBuilder) -> {
-            if (status == null || status.isEmpty()) {
-                return criteriaBuilder.conjunction();
-            }
-            return criteriaBuilder.equal(root.get("status"), status);
-        };
+    public static Specification<OrderItem> hasStatus(OrderStatus status){
+        return ((root, query, criteriaBuilder) ->
+                status != null ? criteriaBuilder.equal(root.get("status"), status) : null);
     }
 
     public static Specification<OrderItem> createdBetween(LocalDate start, LocalDate end) {
@@ -29,5 +26,10 @@ public class OrderItemSpecification {
                 return criteriaBuilder.conjunction();
             }
         };
+    }
+
+    public static Specification<OrderItem> hasItemId(Long itemId){
+        return ((root, query, criteriaBuilder) ->
+                itemId != null ? criteriaBuilder.equal(root.get("id"), itemId) : null);
     }
 }

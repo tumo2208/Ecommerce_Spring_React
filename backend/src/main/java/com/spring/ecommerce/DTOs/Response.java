@@ -27,7 +27,7 @@ public class Response<T> {
 
     // Pagination details
     private int totalPages;
-    private int totalElements;
+    private Long totalElements;
 
     private T data;
 }

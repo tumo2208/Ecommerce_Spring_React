@@ -132,7 +132,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Response<?> searchProducts(String keyword) {
-        List<Product> products = productRepository.findByNameOrDescriptionContainingIgnoreCase(keyword);
+        List<Product> products = productRepository.findByNameOrDescriptionContainingIgnoreCase(keyword, keyword);
 
         if (products.isEmpty()) {
             throw new ResourceNotFoundException("No products found matching the keyword: " + keyword);
