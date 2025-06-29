@@ -8,10 +8,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,7 +24,7 @@ public class ProductController {
 
     @PostMapping("/create")
     @PreAuthorize("hasAuthority('ADMIN')")
-    public ResponseEntity<Response> createProduct(@RequestBody ProductDTO productDTO) {
+    public ResponseEntity<Response> createProduct(@ModelAttribute ProductDTO productDTO) {
         try {
             if (productDTO.getCategoryId() == null || productDTO.getName() == null ||
                 productDTO.getDescription() == null || productDTO.getPrice() == null ||
@@ -52,7 +52,7 @@ public class ProductController {
     @PutMapping("/update/{productId}")
     @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<Response> updateProduct(@PathVariable Long productId,
-                                                  @RequestBody ProductDTO productDTO) {
+                                                  @ModelAttribute ProductDTO productDTO) {
         try {
             Response response = productService.updateProduct(productId,
                                                             productDTO.getCategoryId(),

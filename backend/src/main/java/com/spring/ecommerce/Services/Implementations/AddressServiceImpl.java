@@ -5,6 +5,7 @@ import com.spring.ecommerce.DTOs.Response;
 import com.spring.ecommerce.Models.Address;
 import com.spring.ecommerce.Models.User;
 import com.spring.ecommerce.Repositories.AddressRepository;
+import com.spring.ecommerce.Repositories.UserRepository;
 import com.spring.ecommerce.Services.Interfaces.AddressService;
 import com.spring.ecommerce.Services.Interfaces.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,9 @@ public class AddressServiceImpl implements AddressService {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private UserRepository userRepository;
 
     @Override
     public Response<?> saveAndUpdateAddress(AddressDTO addressDTO) {
@@ -33,7 +37,9 @@ public class AddressServiceImpl implements AddressService {
         if (addressDTO.getZipCode() != null) address.setZipCode(addressDTO.getZipCode());
         if (addressDTO.getCountry() != null) address.setCountry(addressDTO.getCountry());
 
+        user.setAddress(address);
         addressRepository.save(address);
+        userRepository.save(user);
         Response response = new Response<>();
         response.setStatus(200);
         response.setMessage("Address saved successfully");

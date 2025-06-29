@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,7 +22,7 @@ public class CategoryController {
 
     @PostMapping("/create")
     @PreAuthorize("hasAuthority('ADMIN')")
-    public ResponseEntity<Response> createCategory(@RequestBody String categoryName) {
+    public ResponseEntity<Response> createCategory(@RequestParam String categoryName) {
         try {
             Response response = categoryService.createCategory(categoryName);
             return ResponseEntity.ok(response);
@@ -50,7 +49,7 @@ public class CategoryController {
 
     @PutMapping("/update/{categoryId}")
     @PreAuthorize("hasAuthority('ADMIN')")
-    public ResponseEntity<Response> updateCategory(@PathVariable Long categoryId, @RequestBody String categoryName) {
+    public ResponseEntity<Response> updateCategory(@PathVariable Long categoryId, @RequestParam String categoryName) {
         try {
             Response response = categoryService.updateCategory(categoryId, categoryName);
             return ResponseEntity.ok(response);
