@@ -73,7 +73,7 @@ export async function saveAddress(addressData) {
 export async function addCategory(categoryName) {
     try {
         const response = await api.post('/category/create', {
-            params: categoryName,
+            params: {categoryName},
             headers: getHeaders(),
         });
         return response.data;
@@ -86,7 +86,7 @@ export async function addCategory(categoryName) {
 export async function updateCategory(categoryId, categoryName) {
     try {
         const response = await api.put(`/category/update/${categoryId}`, {
-            params: categoryName,
+            params: {categoryName},
             headers: getHeaders(),
         });
         return response.data;
@@ -193,7 +193,7 @@ export async function getProductByCategory(categoryId) {
 export async function searchProducts(query) {
     try {
         const response = await api.get(`/product/search`, {
-            params: query
+            params: {query}
         });
         return response.data;
     } catch (error) {
@@ -217,7 +217,7 @@ export async function placeOrder(orderData) {
 export async function updateOrderStatus(orderId, status) {
     try {
         const response = await api.put(`/order/update-status/${orderId}`, {
-            params: status,
+            params: {status},
             headers: getHeaders(),
         });
         return response.data;
@@ -242,7 +242,7 @@ export async function getAllOrders() {
 export async function getOrderById(itemId) {
     try {
         const response = await api.get(`/order/filter`, {
-            params: itemId,
+            params: {itemId},
             headers: getHeaders(),
         });
         return response.data;
