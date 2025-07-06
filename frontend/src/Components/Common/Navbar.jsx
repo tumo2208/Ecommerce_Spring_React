@@ -32,7 +32,7 @@ const Navbar = () => {
     }
 
     return (
-        <nav className="navbar flex justify-around items-center bg-[#f68b1e] py-2.5 px-5 text-[20px] font-semibold">
+        <nav className="navbar flex justify-between items-center bg-[#f68b1e] py-2.5 px-5 text-[20px] font-semibold">
             <div className="navbar-brand">
                 <NavLink to="/"> <img src="/images/brand.png" alt="Shopee" className="h-10"/></NavLink>
             </div>
@@ -46,13 +46,14 @@ const Navbar = () => {
                 </button>
             </form>
 
-            <div className="navbar-links ">
+            <div className="navbar-links flex items-center">
                 <NavLink to="/">Home</NavLink>
-                <NavLink to="/categories">Categories</NavLink>
+                <NavLink to="/category">Categories</NavLink>
                 {authenticated && <NavLink to="/profile">My Account</NavLink>}
                 {adminStatus && <NavLink to="/admin">Admin</NavLink>}
                 {!authenticated && <NavLink to="/login">Login</NavLink>}
-                {authenticated && <li onClick={handleLogout}>Logout</li>}
+                {authenticated && <button onClick={handleLogout} className="text-white mx-2.5 font-bold bg-transparent
+                border-none cursor-pointer hover:opacity-80">Logout</button>}
                 <NavLink to="/cart">Cart</NavLink>
             </div>
         </nav>
