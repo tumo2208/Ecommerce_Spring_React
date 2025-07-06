@@ -21,6 +21,7 @@ public class ProductDTO {
     private String description;
     private BigDecimal price;
     private MultipartFile image;
+    private String imageUrl;
 
     private Long categoryId;
 }

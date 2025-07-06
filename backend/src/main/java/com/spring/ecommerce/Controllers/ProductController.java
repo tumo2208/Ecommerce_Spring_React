@@ -97,6 +97,19 @@ public class ProductController {
         }
     }
 
+    @GetMapping("/{productId}")
+    public ResponseEntity<Response> getProductById(@PathVariable Long productId) {
+        try {
+            Response response = productService.getProductById(productId);
+            return ResponseEntity.ok(response);
+        } catch (Exception e) {
+            Response response = new Response();
+            response.setStatus(500);
+            response.setMessage("Failed to retrieve product: " + e.getMessage());
+            return ResponseEntity.status(500).body(response);
+        }
+    }
+
     @GetMapping("/category/{categoryId}")
     public ResponseEntity<Response> getProductsByCategory(@PathVariable Long categoryId) {
         try {

@@ -34,10 +34,10 @@ const ProductList = ({products}) => {
                             <img src={product.imageUrl} alt={product.name}
                                  className="product-img w-full h-[200px] object-cover"/>
                             <h3 className="text-[#333] text-[1.2em] my-2.5 font-semibold">{product.name}</h3>
-                            <p className="text-[#777] text-sm mx-5 my-2.5 h-[60px] overflow-hidden">
-                                {product.description}
-                            </p>
-                            <span className="text-[#333] text-[1.1em] my-2.5 block">₹{product.price.toFixed(2)}</span>
+                            {/*<p className="text-[#777] text-sm mx-5 my-2.5 h-[60px] overflow-hidden">*/}
+                            {/*    {product.description}*/}
+                            {/*</p>*/}
+                            <span className="text-[#333] text-[1.1em] my-2.5 block">{product.price.toFixed(2)}</span>
                         </Link>
                         {cartItem ? (
                             <div className="quantity-control flex items-center justify-center my-2.5">

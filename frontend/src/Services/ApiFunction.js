@@ -180,6 +180,16 @@ export async function getAllProducts() {
     }
 }
 
+export async function getProductById(productId) {
+    try {
+        const response = await api.get(`/product/${productId}`);
+        return response.data;
+    } catch (error) {
+        console.error('Get product by ID error:', error);
+        throw error;
+    }
+}
+
 export async function getProductByCategory(categoryId) {
     try {
         const response = await api.get(`/product/category/${categoryId}`);

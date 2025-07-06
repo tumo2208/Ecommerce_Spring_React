@@ -5,6 +5,21 @@ body {
     /*background-color: #f4f4f4;*/
 }
 
+h1 {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+h3 {
+    font-size: 20px;
+    font-weight: 600;
+}
+
 .navbar-links a, li {
     text-decoration: none;
     color: #fff;
@@ -18,4 +33,17 @@ body {
     color: white;
     font-weight: bold;
     margin: 0 15px;
+}
+
+.register-page label,
+.login-page label {
+    margin-bottom: 5px;
+}
+
+.register-page input,
+.login-page input {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }

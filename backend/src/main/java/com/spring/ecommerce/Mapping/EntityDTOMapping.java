@@ -90,6 +90,7 @@ public class EntityDTOMapping {
         productDTO.setName(product.getName());
         productDTO.setDescription(product.getDescription());
         productDTO.setPrice(product.getPrice());
+        productDTO.setImageUrl(product.getImageUrl());
         productDTO.setCategoryId(product.getCategory() != null ? product.getCategory().getId() : null);
 
         return productDTO;
